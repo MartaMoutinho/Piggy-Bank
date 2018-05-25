@@ -176,6 +176,7 @@ color:#f8b195;
     display: inline-block;
     margin-bottom: 0;
   }
+
 }
 
 section.contact {
@@ -224,3 +225,9 @@ section.contact ul.list-social li.social-google-plus a:hover {
   padding-top: 200px;
   margin-top: -200px;
 }
+
+$(document).on('click','.navbar-collapse.in',function(e) {
+    if( $(e.target).is('a:not(".dropdown-toggle")') ) {
+        $(this).collapse('hide');
+    }
+});
