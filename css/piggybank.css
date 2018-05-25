@@ -4,29 +4,6 @@ body {
 padding-top: 70px;
 }
 
-h5{
-	font-family: "Lato"; 
-        font-weight: bold;
-	
-}
-
-h2 {
-	color: #333;
-	text-align: center;
-	text-transform: uppercase;
-	font-family: "Roboto", sans-serif;
-	font-weight: bold;
-	position: relative;
-	margin: 30px 0 60px;
-}
-
-
-
-
-@media (min-width: 992px) {
-  
-}
-
 
 h1 {
   
@@ -51,9 +28,7 @@ font-family: 'Catamaran'
     background-color: #6c5b7b;	
 }
 
-.btn-custom
- 
-{
+.btn-custom {
  
 background-color: #f8b195;
  
@@ -61,7 +36,7 @@ color:#FFF;
   
 }
 
-.btn-custom:active, .btn-custom:focus, .btn-custom:hover {
+.btn-custom:hover {
   background-color: #f58e65 !important;
 }
  
@@ -101,10 +76,7 @@ color:#FFF;
     text-decoration: none; 
 }
 
-
-.btn-calltoaction
- 
-{
+.btn-calltoaction {
  
 background-color: #c06c84;
  
@@ -117,9 +89,7 @@ color:#ffffff;
     text-decoration: none; 
 }
 
-.btn-subscribe
- 
-{
+.btn-subscribe {
  
 background-color: #f8b195;
  
@@ -134,26 +104,19 @@ color:#355c7d;
 }
 
 
-.footer-custom
- 
-{
+.footer-custom {
  
 background-color: #355c7d;
  
 color:#ffffff;
 }
 
-.footer-text
- 
-{
+.footer-text {
  
 color:#ffffff;
 }
 
-.footer-text:hover
- 
-{
- 
+.footer-text:hover{
 color:#e2e6ea;
 text-decoration:none;
 }
@@ -195,7 +158,6 @@ color:#f8b195;
   padding-bottom: 2rem;
 }
 
-
 .download .badges .badge-link {
   display: block;
   margin-bottom: 25px;
@@ -216,17 +178,9 @@ color:#f8b195;
   }
 }
 
-@media (min-width: 768px) {
-  .download h2 {
-    font-size: 60px;
-  }
-}
-
 section.contact {
   text-align: center;
 }
-
-
 
 section.contact ul.list-social {
   margin-bottom: 0;
