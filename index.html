@@ -1,278 +1,614 @@
 <!DOCTYPE html>
 <html lang="en">
+
   <head>
+
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Piggy Bank - Banking for Young People Made Simple</title>
-
-    <!-- Bootstrap core CSS -->
+    <title>Авторские путешествия по Португалии</title>
+	<script src="http://maps.google.com/maps/api/js?sensor=false" 
+          type="text/javascript"></script>
+    <!-- Bootstrap Core CSS -->
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-	<link href="https://fonts.googleapis.com/css?family=Catamaran" rel="stylesheet">
-	<link rel="shortcut icon" href="img/logo.ico" type="image/x-icon">    <!-- Custom styles for this template -->
-    <link href="css/piggybank.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
+    <link href="vendor/simple-line-icons/css/simple-line-icons.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="css/stylish-portfolio.min.css" rel="stylesheet">
+
+	<style>
+      #map {
+        width: 100%;
+        height: 510px;
+        background-color: grey;
+      }
+	  
+
+</style>
+	
+	<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA3ZQbaUHoNCV795ljJYmyyVVaKLD5qb2M"></script>
+
+
+    <script type="text/javascript">
+
+        var locations = [
+            ['Porto', 41.1579438, -8.629105299999992, 1],
+            ['Guimarães', 41.44253, -8.291785699999991, 2],
+			['Braga', 41.54544860000001, -8.426507000000015, 3],
+			['Ponte de Lima', 41.7647333, -8.582740699999931, 4],
+			['Viana do Castelo', 41.6918275, -8.834410100000014, 5],
+			['Valença', 42.026875, -8.642152, 6],
+			['Monção', 42.077185, -8.481944, 7],
+
+        ];
+        function InitMap() {
+            var map = new google.maps.Map(document.getElementById('map'), {
+                zoom: 9,
+                center: new google.maps.LatLng(41.64544860000001, -8.426507000000015),
+                mapTypeId: google.maps.MapTypeId.ROADMAP
+            });
+            var infowindow = new google.maps.InfoWindow();
+            var marker, i;
+            for (i = 0; i < locations.length; i++) {
+                marker = new google.maps.Marker({
+                    position: new google.maps.LatLng(locations[i][1], locations[i][2]),
+                    map: map
+                });
+                google.maps.event.addListener(marker, 'click', (function (marker, i) {
+                    return function () {
+                        infowindow.setContent(locations[i][0]);
+                        infowindow.open(map, marker);
+                    }
+                })(marker, i));
+            }
+        }
+    </script>
+
+	
 	
   </head>
 
-  <body>
+  <body id="page-top">
   
-<nav class="navbar navbar-expand-lg navbar-light navbar-default fixed-top" id="mainNav" data-target=".navbar-collapse">
-  <a class="navbar-brand navbar-default" href="#5A">
-    <img src="img/logo.svg" width="67"  class="d-inline-block align-center" alt="">
-	<strong>Piggy Bank</strong>
-  </a>
-	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    
-	</button>
+  
 
+  
+  <!-- Navigation -->
+  <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand js-scroll-trigger text-warning" href="#page-top">Portugal Trips</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
+  
     <ul class="navbar-nav mr-auto">
       
-       <li class="nav-item">
-        <a class="nav-link" href="#4A"><h5>Online Banking</h5></a>
+       <li class="nav-item mt-2 font-weight-bold">
+  <a class="nav-item nav-link js-scroll-trigger text-primary" href="#about">О путешествии</a>
       </li>
 	  
-	   <li class="nav-item">
-        <a class="nav-link" href="#3A"><h5>Debit Card</h5></a>
+	     
+       <li class="nav-item mt-2 font-weight-bold">
+	  <a class="nav-item nav-link js-scroll-trigger text-primary" href="#why">Почему мы едем на север</a>
       </li>
 	  
-	   <li class="nav-item">
-        <a class="nav-link" href="#1A"><h5>Joint Account</h5></a>
+	   <li class="nav-item mt-2 font-weight-bold">
+	  <a class="nav-item nav-link js-scroll-trigger text-primary" href="#program">Программа</a>
       </li>
 	  
-	  <li class="nav-item">
-        <a class="nav-link" href="#2A"><h5>Reviews</h5></a>
+	   <li class="nav-item mt-2 font-weight-bold">
+	  <a class="nav-item nav-link js-scroll-trigger text-primary" href="#price">Стоимость</a>
       </li>
-  
-    </ul>
-	
-	 <button type="button" class="btn btn-light">Sign Up</button>
-	 <button type="button" class="btn btn-link mx-0">Log In</button>
-  
-            <form class="form-inline my-2 my-lg-0 mr-lg-2">
-            <div class="input-group">
-              <input class="form-control" type="text" placeholder="Search">
-              <span class="input-group-append">
-                <button class="btn btn-custom" type="button">
-                  <i class="fa fa-search"></i>
-                </button>
-              </span>
-            </div>
-          </form>
     
-	 
-   </div>
-</nav>
- 
-    <!-- Page Content -->
-    <div class="container">
-
-      <!-- Heading Row -->
-      <div class="row download my-5">
-        <div class="col-lg-7">
-          <img class="img-fluid" src="img/piggybankpic.png" alt="">
-        </div>
-
-        <div class="col-lg-5 anchor" id="5A">
-        <font color="980b19"><h1>Banking for Young Adults Made Simple</h1></font>
-        <font color="355c7d">
-		<p>
-      
-             <h5><li>Safe and reliable place to store your money</li></h5>
-             <h5><li>Specialized account linked to a parent's account</li></h5>
-             <h5><li>Customizable spending limits</li></h5>
-			 <h5><li>Different types of savings accounts</li></h5>
-			 <h5><li>Discounts and special offers for students and working teenagers</li></h5>
-			
-	    </p>
-		</font>
-          <a class="btn btn-calltoaction btn-lg col-md-4" href="#">Order a card</a>
-        </div>
-
+	  <li class="nav-item mt-2 font-weight-bold">
+      <a class="nav-item nav-link js-scroll-trigger text-primary" href="#aboutus">О нас</a>
+      </li>
+	  
+	  <li class="nav-item font-weight-bold">
+	  <a class="nav-item nav-link js-scroll-trigger" href="#reserve"><button type="button" class="btn btn-warning mt-0">Забронировать место</button></a>
+      </li>
+    
+	</ul>
+    
+   
+  </div>
+   </nav>
+	   
+	   
+	   
+	
+		
+ <!-- Header -->
+    <header class="masthead d-flex">
+      <div class="container text-center my-auto text-white">
+        <h2 class="mb-1">Занятное путешествие по северу Португалии</h2>
+        <h3 class="mb-5">
+          <em>1-8 мая 2019 года. Порту и окрестности региона Минью.</em>
+        </h3>
+		<a class="btn btn-primary btn-xl js-scroll-trigger" href="#about">Узнать подробнее</a>
       </div>
-    
-	  <hr>
-	    <!-- Heading Row -->
-      <div class="row ml-5 download anchor" id="4A">
-        <!-- /.col-lg-8 -->
-        <div class="col-lg-5 my-4">
-        <font color="980b19"><h1>Download Piggy Bank Application</h1></font>
-        <font color="355c7d">
-			
-		  <p>
-           <p>Manage your money online through our app which is available on any mobile device. Moreover, you can make money transfers easily.</p>
-		   <p> Piggy Bank Application allows you to see your balance and history, change settings and set spending limits.</p>
-				<div class="badges">
-				<a class="badge-link" href="#"><img src="img/google-play-badge.svg" alt=""></a>
-				<a class="badge-link" href="#"><img src="img/app-store-badge.svg" alt=""></a>
-				</div>
-	      </p>
-		</font>
-         
-       </div>
-		
-		<div class="col-lg-7 ml-6">
-          <img class="img-fluid" src="img/friends.jpg" alt="">
-        </div> </div>
-		
-	  <hr>
+      <div class="overlay"></div>
+    </header>
+
 	
-	    <!-- Heading Row -->
-      <div class="row my-5 ml-0 mr-5">
-        <div class="col-lg-7">
-          <img class="img-fluid" src="img/girl_piggybank.jpg" alt="">
+	
+	
+	
+	
+    <!-- About -->
+    <section class="content-section whyportugal" id="about">
+      <div class="container text-center">
+        <div class="row">
+          <div class="col-lg-10 mx-auto">
+            <h2 class="textshort">Коротко о главном</h2>
+			 <div class="heading-line"></div>
+
+			
+			
+           
+		<div class="row mt-5">
+	    <div class="col-sm">
+		<i class="fa fa-4x fa-bath mb-3 plus-icons"></i><br>
+			 <h4>10 дней счастья</h4> 
+        13-22 мая (8 ночей/9 дней): двухместное размещение в комфортабельных гостиницах.
+		
+            </div>
+		
+	    <div class="col-sm">
+		<i class="fa fa-4x fa-camera-retro mb-3 plus-icons"></i><br>
+		 <h4> 8 городов и 2 страны</h4> 
+        7 старинных городов самого живописного региона Португалии, а еще испанский город Туй.
+         </div>
+        <div class="col-sm">
+		<i class="fa fa-4x fa-user mb-3 plus-icons"></i><br>
+
+        <h4> Группа: 10 человек </h4> 
+		Небольшая группа единомышленников. Не бойтесь ехать одни, вы обязательно встретите новых друзей! <span class="badge badge-warning">Осталось 6 мест</span>
+            </div>
+		   <div class="row mt-5">
+			<div class="col-sm">
+			<i class="fa fa-4x fa-mortar-board mb-3 plus-icons"></i><br>
+		 <h4>Программа</h4> 
+        Рассказы про культуру Португалии, экскурсии, дегустация вина и уроки португальского языка.
+		
         </div>
-      		  
-        <div class="col-lg-5 anchor" id="3A">
-        <font color="980b19"><h1>Debit Card and Savings Plans for Teenagers</h1></font>
-        <font color="355c7d">
-		<p>
-			Whatever it is you are saving for, the sooner you get started with a savings plan, the quicker you can reach your goal.
+			
+	    <div class="col-sm">
+	    <i class="fa fa-4x fa-cutlery mb-3 plus-icons"></i><br>
+        <h4>Питание</h4> 
+        В стоимость входят 8 завтраков + 6 обедов + 2 ужина. В Португалии очень вкусная еда!
+         </div>
+        <div class="col-sm">
+		<i class="fa fa-4x fa-bus mb-3 plus-icons"></i><br>
+        <h4>Транспорт</h4> 
+        Проезд в поездах, автобусах и катерах включен в стоимость.
+        </div>
+		</div>
+        </div>
+      </div>
+    </section>
+	
+		<!-- Map -->
+	
+   	 <section class="bg-light">
+      <div class="content-section container" id="why">
+        <div class="section-heading text-center">
+          <h2>Ключевые моменты</h2>
+           <div class="heading-line"></div>
+        </div>
+        <div class="row">
+          <div class="col no-gutters">
+           <div id="map">
+		   <body onload="InitMap();">
+		</div>
+          </div>
+       
+                    
+                <div class="col">
+                  <div class="feature-item">
+                    
+                    <h4>Что нас ждёт в поездке?</h4>
+					<p class="text-muted"><i class="fa fa-arrow-right plus-icons"></i> Начнём мы наше путешествие с Порту, так называемой северной столицы Португалии. В отличие от Лиссабона, который был разрушен землятресением в 1755 году, в Порту отлично сохранились старинные здания и архитектура.</p>
+				    <p class="text-muted"><i class="fa fa-arrow-right plus-icons"></i> Мы будет исследовать португальский регион Минью. Именно в этих местах производят известное на весь мир винью-верде (зелёное вино). Мы узнаем, как его производят и какое оно на вкус.</p>
+					<p class="text-muted"><i class="fa fa-arrow-right plus-icons"></i> Мы будем много ходить и передвигаться с места на место на поездах и автобусах. Мы не любим скакать галопом по Европам, поэтому изучать север Португалии мы будет основательно.</p>
+ 					<p class="text-muted"><i class="fa fa-arrow-right plus-icons"></i> Нам чужды сухие факты и скучные экскурсии, мы  рассказываем увлекательно и по делу. Наша главная цель — влюбить вас в Португалию, показывая ее самые красивые места и рассказывая вам о ее культуре, истории, быте и нравах её жителей. </p>
+					<p class="text-muted"><i class="fa fa-arrow-right plus-icons"></i> Мы постараемся, чтобы вы полюбили португальский язык и начали его изучать. Как никак, в мире на нем говорят более 240 миллионов человек!</p>
+
+                  </div>
+                </div>
             
-	    </p>
-		<p>What are you aiming at? Do you want to buy a car, a new phone or have a trip to any exotic place of the world? It is up to you to decide, we just give your flexible savings options.</p>
-			For those who work there are even more options, you can decide how much money per month will go to your savings account and for how long it will stay there.
-        </p>
-
-		</font>
-        </div>
-	  
+             
+            
+         </div>
       </div>
-      
-	   <hr>
-	 <!-- Heading Row -->
-      <div class="row mt-5">
-        
-        <div class="col-lg-5 anchor" id="1A">
-        <font color="980b19"><h1>Having a Joint Account Together with Your Parents</h1></font>
-        <font color="355c7d">
-		<p>
-        There is a possibility to connect your account to the parent's one. Your parents will have much more trust towards you if your account will be transparent for them.
-	    </p>
-		<p>By having a joint account you will be able to acquire financial literacy which is very important nowadays. In the future you will be able to learn about credit scores, paying bills on time, saving money, staying out of debt and much more. </p>
-		</font>
+    </section>
+	
+
+
+	 <!-- Image Showcases -->
+    <section class="showcase showcase-padding" id="program">
+	<div class="col-lg-12 text-center">
+            <h2 class="section-heading">Программа поездки</h2>
+            <div class="heading-line"></div>
+          </div>
+      <div class="container-fluid p-0">
+        <div class="row no-gutters">
+		  <div class="col-lg-6 order-lg-2 text-white showcase-img" style="background-image: url('img/porto-01.jpg');"></div>
+          <div class="col-lg-6 order-lg-1 my-auto showcase-text">
+            <h3>День 1: Знакомство с Порту</h3>
+            <p class="lead mb-0">Встреча группы и заселение в гостиницу. Вечером нас ждет приветственный ужин и прогулка по историческому центру. Мы увидим старинный квартал Рибейра, дойдем до моста Дона Луиша и насладимся видом на город.</p>
+          </div>
+        </div>
+		<div class="row no-gutters">
+          <div class="col-lg-6 text-white showcase-img" style="background-image: url('img/porto-06.png');"></div>
+          <div class="col-lg-6 my-auto showcase-text">
+            <h3>День 2: Порту</h3>
+            <p class="lead mb-0">У нас будет целый день, чтобы исследовать Порту и насладиться его очарованием. Мы побываем на дегустации портвейна, осмотрим Кафедральный собор и Биржевой дворец, и обязательно поднимемся на самую высокую церковкую башню Португалии Торре-душ-Клеригуш.</p>
+          </div>
+        </div>
+		<div class="row no-gutters">
+		  <div class="col-lg-6 order-lg-2 text-white showcase-img" style="background-image: url('img/guimaraes-01.jpg');"></div>
+          <div class="col-lg-6 order-lg-1 my-auto showcase-text">
+            <h3>День 3: Гимарайнш</h3>
+            <p class="lead mb-0">Утром мы отправимся в старинный городок Гимарайнш, именно в нём зародилась Португалия. Мы побываем в древней крепости Сан-Мигель и дворце герцогов Браганса, а также прокатимся по канатной дороге, с которой открывается захватывающий дух вид на гору Пенья. </p>
+          </div>
+        </div>
+        <div class="row no-gutters">
+          <div class="col-lg-6 text-white showcase-img" style="background-image: url('img/braga-01.jpg');"></div>
+          <div class="col-lg-6 my-auto showcase-text">
+            <h3>День 4: Брага</h3>
+            <p class="lead mb-0">Сегодня мы переберёмся в Брагу, где посетим одну из самых главных и узнаваемых достопримечательностей Португалии - святилище Бон-Жезуш-ду-Монти. А ещё мы прогуляемся по живописному саду Санта-Барбара и зайдем в самый старый кафедральный собор Португалии.</p>
+          </div>
+        </div>
+		<div class="row no-gutters">
+		  <div class="col-lg-6 order-lg-2 text-white showcase-img" style="background-image: url('img/ponte-de-lima-01.jpg');"></div>
+          <div class="col-lg-6 order-lg-1 my-auto showcase-text">
+            <h3>День 5: Понти-ди-Лима</h3>
+            <p class="lead mb-0">Винью-верде. Также во время нашего путешествия в городе будет проходить международный фестиваль садов, на который мы обязательно заглянем. </p>
+        </div>
         </div>
 		
-		<div class="col-lg-7">
-			<img class="img-fluid" src="img/parents.jpg" alt="">
+        <div class="row no-gutters">
+          <div class="col-lg-6 text-white showcase-img" style="background-image: url('img/viana-do-castelo-01.jpg');"></div>
+          <div class="col-lg-6 my-auto showcase-text">
+            <h3>День 6: Виана-ду-Каштелу</h3>
+            <p class="lead mb-0">На фуникулёре мы поднимемся на холм, где находится церковь Санта-Лусия и смотровая площадка, с которой открывается потрясающий вид на долину реки Лима, Атлантический океан и горы. А ещё мы побываем в очень необычном и интересном месте - плавучем госпитале.</p>
+          </div>
         </div>
-	 
-      </div>
-  	
-	<hr>
-	</div>
-      
-        
-    <!-- Testimonials -->
-    <section class="testimonials text-center bg-white">
+		
+		<div class="row no-gutters">
+		  <div class="col-lg-6 order-lg-2 text-white showcase-img" style="background-image: url('img/valenca-01.jpg');"></div>
+          <div class="col-lg-6 order-lg-1 my-auto showcase-text">
+            <h3>День 7: Валенса и Менсао</h3>
+            <p class="lead mb-0">В Монсао мы будем гулять внутри старинной крепости, а днём отправимся на экскурсию во дворец Брежуэйра, где мы также посетим старую винодельню с садом и виноградниками. Вернувшись обратно в Валенсу, мы прогуляемся до Испании, ведь для этого нужно всего лишь перейти мост! </p>
+          </div>
+        </div>
+		
+		
+		<div class="row no-gutters">
+          <div class="col-lg-6 text-white showcase-img" style="background-image: url('img/porto-12.jpg');"></div>
+          <div class="col-lg-6 my-auto showcase-text">
+            <h3>День 8: Возвращение в Порту</h3>
+            <p class="lead mb-0">Отменно позавтракав, мы вернёмся обратно в Порту. В Порту мы прогуляемся по парку Хрустального дворца и поужинаем. </p>
+          </div>
+        </div>
+		
+			<div class="row no-gutters">
+		  <div class="col-lg-6 order-lg-2 text-white showcase-img" style="background-image: url('img/porto-08.png');"></div>
+          <div class="col-lg-6 order-lg-1 my-auto showcase-text">
+            <h3>День 9: Трансфер в аэропорт</h3>
+            <p class="lead mb-0">После плотного завтрака в отеле придёт время собираться в аэропорт. </p>
+          </div>
+        </div>
+      		
+       </div>
+    </section>
+	
+ 	  <section class="content-section bg-light" id="price">
       <div class="container">
-       <font color="980b19"><h1 class="mb-5">What teens are saying...</h1></font>
-        <div class="row anchor" id="2A">
-          <div class="col-lg-4">
-            <div class="testimonial-item mx-auto mb-5 mb-lg-0">
-              <img class="img-fluid rounded-circle mb-3" src="img/testimonials-1.jpg" alt="">
-              <h5>Dean</h5>
-              <p class="font-weight-light mb-0">"The app is amazing, it is very easy to use. I have big plans for saving money at Piggy Bank."</p>
+        <div class="section-heading text-center">
+          <h2>Стоимость</h2>
+         <div class="heading-line"></div>
+        </div>
+        <div class="row">
+          <div class="col no-gutters">
+		  
+
+	  
+	<script>
+// Set the date we're counting down to
+var countDownDate = new Date("Sep 5, 2018 15:37:25").getTime();
+
+// Update the count down every 1 second
+var x = setInterval(function() {
+
+  // Get todays date and time
+  var now = new Date().getTime();
+
+  // Find the distance between now an the count down date
+  var distance = countDownDate - now;
+
+  // Time calculations for days, hours, minutes and seconds
+  var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+  var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+  var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+  // Display the result in the element with id="demo"
+  document.getElementById("demo").innerHTML = days + "д. " + hours + "ч. "
+  + minutes + "м. " + seconds + "с. ";
+
+  // If the count down is finished, write some text 
+  if (distance < 0) {
+    clearInterval(x);
+    document.getElementById("demo").innerHTML = "EXPIRED";
+  }
+}, 1000);
+</script>
+
+  <table class="mx-auto" style="height: 100px;">
+  <tbody>
+    <tr>
+	
+      <td class="align-middle"><h2> <i class=" fa fa-eur"></i>
+	  1247</h2></td>
+      <td class="align-text-top"><del><h3><i class=" fa fa-eur"></i>1499</h3></del></td>
+     
+    </tr>
+  </tbody>
+</table>
+
+	  <p class="text-danger d-inline">  Специальное предложение действует ещё <p class="d-inline text-danger" id="demo"> </p> </p>
+
+		  
+          <div class="subheading mt-4 mb-3">Что включено в стоимость:</div>
+          <ul class="fa-ul mb-0">
+            <li>
+              <i class="fa-li fa fa-check"></i>
+             Проживание в двухместном номере в комфортабельных отелях</li>
+            <li>
+              <i class="fa-li fa fa-check"></i>
+             Завтраки и обеды во время всего путешествия </li>
+            <li>
+              <i class="fa-li fa fa-check"></i>
+             Ужин в Порту в день приезда</li>
+            <li>
+              <i class="fa-li fa fa-check"></i>
+             Сопровождение и экскурсии по городам</li>
+			 <li>
+              <i class="fa-li fa fa-check"></i>
+             Экскурсия и дегустация портвейна в Порту</li>
+			 <li>
+              <i class="fa-li fa fa-check"></i>
+             Все билеты на поезда, автобусы и катера для перемещения по стране</li>
+			 <li>
+              <i class="fa-li fa fa-check"></i>
+             Трансфер из и до аэропорта (при покупке билета на такой-то рейс)</li>
+			 <li>
+              <i class="fa-li fa fa-check"></i>
+             Экскурсия и дегустация винью-верде (зеленое вино) в Понти-де-Лима</li>
+			 <li>
+              <i class="fa-li fa fa-check"></i>
+            Посещение запланированных по программе музеев</li>
+		  </ul>
+        
+          </div>
+       
+                    
+                <div class="col">
+                  
+			<table class="mx-auto" style="height: 100px;">  
+    <tbody>
+    <tr>
+      <td class="align-middle"><h2> Дополнительно</h2></td>
+     
+    </tr>
+    </tbody>
+    </table>	
+               
+
+         
+          <div class="subheading mb-3">Что НЕ включено в стоимость:</div>
+          <ul class="fa-ul mb-0">
+            <li>
+              <i class="fa-li fa fa-check"></i>
+             Авиаперелеты  (при покупки билетов на рейс Москва-Порту с пересадкой в Лиссабоне, вы получите скидку 55 евро на путешествие).</li>
+            <li>
+              <i class="fa-li fa fa-check"></i>
+             Страховка?? </li>
+            <li>
+              <i class="fa-li fa fa-check"></i>
+             Личные расходы</li>
+			 <li>
+              <i class="fa-li fa fa-check"></i>
+            Ужины (за иключением ужина в день приезда)</li>
+           </ul>
+			
+           </ul>
+                  </div>
+              
+            
+             
+            
+         </div>
+      </div>
+    </section> 
+	
+	
+	<section class="content-section whyportugal" id="aboutus">
+        <div class="container">
+          <div class="col-lg-12 text-center section-heading">
+             <h2 class="section-heading">Почему путешествовать с нами?</h2>
+          <div class="heading-line"></div>
+          </div>
+        </div>
+      
+      <div class="container mb-5">
+        <div class="row">
+          <div class="col-lg-3 col-md-6 text-center">
+            <div class="service-box mt-5 mx-auto">
+              <i class="fa fa-4x fa-battery-full text-primary mb-3 sr-icons"></i>
+              <h3 class="mb-3">Подзарядка</h3>
+              <p class="text-muted mb-0">Наше авторское путешествие поможет вам отвлечься от рутины и расширить свой кругозор. Мы любим делиться знаниями и видеть, как люди заряжаются позитивом.</p>
             </div>
           </div>
-          <div class="col-lg-4">
-            <div class="testimonial-item mx-auto mb-5 mb-lg-0">
-              <img class="img-fluid rounded-circle mb-3" src="img/testimonials-2.jpg" alt="">
-              <h5>Emily</h5>
-              <p class="font-weight-light mb-0">"After creating an account at Piggy Bank, my parents have started to trust me more with money issues."</p>
+          <div class="col-lg-3 col-md-6 text-center">
+            <div class="service-box mt-5 mx-auto">
+              <i class="fa fa-4x fa-comments text-primary mb-3 sr-icons"></i>
+              <h3 class="mb-3">Единомышленники</h3>
+              <p class="text-muted mb-0">Мы верим, что ничего на свете лучше нету, чем бродить друзьям по белу свету. У нас вы обретете новых знакомых и товарищей, влюбленных в путешествия и Португалию.</p>
             </div>
           </div>
-          <div class="col-lg-4">
-            <div class="testimonial-item mx-auto mb-5 mb-lg-0">
-              <img class="img-fluid rounded-circle mb-3" src="img/testimonials-3.jpg" alt="">
-              <h5>Bob</h5>
-              <p class="font-weight-light mb-0">"I am happy that I found Piggy Bank. It is a good bank indeed, I feel like my finances are safe there."</p>
+          <div class="col-lg-3 col-md-6 text-center">
+            <div class="service-box mt-5 mx-auto">
+              <i class="fa fa-4x fa-map text-primary mb-3 sr-icons"></i>
+              <h3 class="mb-3">Маршрут</h3>
+              <p class="text-muted mb-0">Наш маршрут тщательно проработан и проверен на практике, мы покажем и расскажем вам об очень красивых и интересных местах Португалии.</p>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-6 text-center">
+            <div class="service-box mt-5 mx-auto">
+              <i class="fa fa-4x fa-handshake-o text-primary mb-3 sr-icons"></i>
+              <h3 class="mb-3">Надежность</h3>
+              <p class="text-muted mb-0">Мы говорим на португальском языке и знаем все тонкости португальской культуры. В обиду не дадим, а вот азам португальского языка научим!</p>
             </div>
           </div>
         </div>
       </div>
     </section>
-	</div>
- 	
-<!-- Footer -->
-<footer class="page-footer footer-custom font-small mdb-color pt-4 mt-4">
-
-  <!-- Footer Links -->
-  <div class="container text-center text-md-left">
-
-    <!-- Footer links -->
-    <div class="row text-center text-md-left mt-3 pb-3">
-    
-      <hr class="w-100 clearfix d-md-none">  
-      <!-- Grid column -->
-      <div class="col-md-2 col-lg-2 col-xl-3 mx-auto mt-3">
 	
-        <section class="contact" id="contact">
-        <ul class="list-inline list-social">
-          <li class="list-inline-item social-twitter">
-            <a href="#">
-              <i class="fa fa-twitter"></i>
+	<section class="content-section" id="reserve">
+        <div class="container">
+          <div class="col-lg-12 text-center section-heading">
+             <h2 class="section-heading">Забронировать место</h2>
+          <div class="heading-line"></div>
+          </div>
+        </div>
+      
+  <div class="container formcontact">
+  <form name="sentMessage" id="contactForm" novalidate="novalidate">
+  
+   <div class="control-group">
+   <div class="form-group mt-4">
+   <input type="text" id="name" class="form-control" placeholder="Ваше имя" data-validation-required-message="Please enter your name.">  </div> </div>
+
+  <div class="form-group">
+  <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Ваш e-mail">
+  </div>
+ 
+   <div class="form-group">
+   <input type="phone" class="form-control" id="exampleFormControlInput1" placeholder="Ваш телефон">
+   </div>
+   
+   <div class="mt-3 mb-1">Как с вами лучше всего связаться?</div>
+   <div class="form-check">
+   <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+   <label class="form-check-label" for="defaultCheck1">
+   WhatsApp
+  </label>
+  </div>
+  
+  <div class="form-check">
+   <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+   <label class="form-check-label" for="defaultCheck1">
+   Viber
+  </label>
+  </div>
+  
+  <div class="form-check">
+   <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+   <label class="form-check-label" for="defaultCheck1">
+   Telegram
+  </label>
+  </div>
+  
+   <div class="form-check">
+   <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+   <label class="form-check-label" for="defaultCheck1">
+   SMS
+  </label>
+  </div>
+  
+   <div class="form-check">
+   <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+   <label class="form-check-label" for="defaultCheck1">
+   E-mail
+  </label>
+  </div>
+ 
+  
+   <button type="submit" class="btn btn-primary mt-3">Отправить</button>
+</form>
+</div>
+  </section>
+  
+  
+  <section>
+  <form action="mail/send_simpleform.php" method="post">
+<p>Your name<br />
+<input name="sender_name" type="text" size="30" /></p>
+<p>Email<br  />
+<input name="sender_email" type="text" size="30" /></p>
+<p>Message<br />
+<textarea name="message" cols="30" rows="5"></textarea></p>
+<input name="submit" type="submit" value="Send This Form" />
+</form>
+
+  </section>
+	
+	 
+    <!-- Footer -->
+    <footer class="footer text-center">
+      <div class="container">
+        <ul class="list-inline mb-5">
+          <li class="list-inline-item">
+            <a class="social-link rounded-circle text-white mr-3" href="#">
+              <i class="icon-social-facebook"></i>
             </a>
           </li>
-          <li class="list-inline-item social-facebook">
-            <a href="#">
-              <i class="fa fa-facebook"></i>
+          <li class="list-inline-item">
+            <a class="social-link rounded-circle text-white mr-3" href="#">
+              <i class="fa fa-telegram"></i>
             </a>
           </li>
-          <li class="list-inline-item social-google-plus">
-            <a href="#">
-              <i class="fa fa-google-plus"></i>
+          <li class="list-inline-item">
+            <a class="social-link rounded-circle text-white" href="#">
+              <i class="icon-social-instagram"></i>
             </a>
           </li>
         </ul>
-		</section>	
-        </div>
-		
-      <!-- Grid column -->
-	  <hr class="w-100 clearfix d-md-none">
-      <hr class="w-100 clearfix d-md-none">
-      <!-- Grid column -->
-      <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mt-3">
-        <p><i class="fa fa-envelope mr-3"></i> support@peggybank.com</p>
-        <p><i class="fa fa-phone mr-3"></i> + 06 9808 3164</p>
+        <p class="text-muted small mb-0">Copyright &copy; Portugal Trips 2018</p>
       </div>
-	  <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mt-3">
-		<p>Subscribe to our newsletter:</p>
-		<form class="form-inline">
-      <div class="form-group mx-0">
-		<label for="inputPassword2" class="sr-only">Password</label>
-		<input type="password" class="form-control mb-2" id="inputPassword2" placeholder="Enter your email">
-		<button type="submit" class="btn btn-subscribe mb-0 mx-2 mb-2"><strong>Subscribe</strong></button>
-		</form>
-      <!-- Grid column -->
-	</div>
-	</div>
-    </div>
-    <!-- Footer links -->
+    </footer>
+	
+	
 
-    <hr>
-
-
-    <div class="row d-flex align-items-center">
-      <div class="col-md-8 col-lg-8">
-        <p class="text-center text-md-left">© 2018 <a class="footer-link" href="#!"><strong> PeggyBank</strong></a> | <a class="footer-text" href="#!">Privacy Policy</a> | <a class="footer-text" href="#">Terms & Conditions</a></p>
-
-      </div>
-      <div class="col-md-4 col-lg-4 ml-lg-0">
-      </div>
-    </div>
-  </div>
-  <!-- Footer Links -->
-</footer>
-<!-- Footer -->
-                      
+    <!-- Scroll to Top Button-->
+    <a class="scroll-to-top rounded js-scroll-trigger" href="#page-top">
+      <i class="fa fa-angle-up"></i>
+    </a>
 
     <!-- Bootstrap core JavaScript -->
     <script src="vendor/jquery/jquery.min.js"></script>
     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Plugin JavaScript -->
+    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
+    <!-- Custom scripts for this template -->
+    <script src="js/stylish-portfolio.min.js"></script>
+	 <script src="js/contact_me.js"></script>
+	 
+	 <!-- Contact Form JavaScript -->
+    <script src="js/jqBootstrapValidation.js"></script>
+    <script src="js/contact_me.js"></script>
+
 
   </body>
 
